@@ -38,6 +38,7 @@ const handleSubmit = async (event, setUser) => {
   const user = await loginService.submitLogin(username,password)
   if (user) {
     setUser(user.data)
+    localStorage.setItem('user', JSON.stringify(user.data))
   }
 }
 

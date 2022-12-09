@@ -11,6 +11,7 @@ const LoggedOutPage = (
 ) => {
   return (
     <div>
+      <h2>log in</h2>
       <LoginForm 
         usernameFieldText={usernameFieldText}
         setUsernameFieldText={setUsernameFieldText}

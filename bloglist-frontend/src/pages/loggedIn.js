@@ -1,4 +1,21 @@
 import Blog from '../components/Blog'
+import LogoutButton from '../components/LogoutButton'
+
+const LoggedInPage = ({blogs, user, setUser}) => {
+  return (
+    <div>
+      <h2>blogs</h2>
+      <div>
+        <DisplayUser user={user} />
+        <LogoutButton setUser={setUser} />
+      </div>
+      <div>
+        <ListedBlogs blogs={blogs} />
+      </div>
+    </div>
+  )
+}
+
 const ListedBlogs = ({blogs}) => {
   return (
     <div>
@@ -10,20 +27,11 @@ const ListedBlogs = ({blogs}) => {
 }
 const DisplayUser = ({user}) => {
   return (
-    <div>
+    <div style={{display: 'inline-block'}}>
       {user.name} logged in
     </div>
   )
 }
 
-const LoggedInPage = ({blogs, user}) => {
-  return (
-    <div>
-      <DisplayUser user={user} />
-      <p></p>
-      <ListedBlogs blogs={blogs} />
-    </div>
-  )
-}
 
 export default LoggedInPage

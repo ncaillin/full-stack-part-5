@@ -9,20 +9,23 @@ const App = () => {
   const [passwordFieldText, setPasswordFieldText] = useState('password')
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
+  useEffect(() => { // run once on page load
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
-    )  
+    )
+    if (localStorage.user) { // get saved user if exists
+      setUser(JSON.parse(localStorage.user))
+    }
   }, [])
 
   return (
     <div>
-      <h2>blogs</h2>
       {
         user !== null
           ? <LoggedInPage
               blogs={blogs}
               user={user}
+              setUser={setUser}
             />
           : <LoggedOutPage
               usernameFieldText={usernameFieldText}

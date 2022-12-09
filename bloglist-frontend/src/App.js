@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
-import Blog from './components/Blog'
+import LoggedInPage from './pages/loggedIn'
+import LoggedOutPage from './pages/loggedOut'
 import blogService from './services/blogs'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
+  const [usernameFieldText, setUsernameFieldTest] = useState('username')
+  const [passwordFieldText, setPasswordFieldText] = useState('password')
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -14,9 +18,20 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
-      )}
+      {
+        user !== null
+          ? <LoggedInPage
+              blogs={blogs}
+              user={user}
+            />
+          : <LoggedOutPage
+              usernameFieldText={usernameFieldText}
+              setUsernameFieldText={setUsernameFieldTest}
+              passwordFieldText={passwordFieldText}
+              setPasswordFieldText={setPasswordFieldText}
+              setUser={setUser}
+            />
+      }
     </div>
   )
 }

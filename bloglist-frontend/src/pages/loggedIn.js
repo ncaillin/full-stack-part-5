@@ -1,13 +1,38 @@
 import Blog from '../components/Blog'
 import LogoutButton from '../components/LogoutButton'
+import NewBlogForm from '../components/NewBlogForm'
 
-const LoggedInPage = ({blogs, user, setUser}) => {
+const LoggedInPage = ({
+  blogs, 
+  user, 
+  setUser,
+  title,
+  setTitle,
+  author,
+  setAuthor,
+  url,
+  setUrl,
+  setBlogs
+}) => {
   return (
     <div>
       <h2>blogs</h2>
       <div>
         <DisplayUser user={user} />
         <LogoutButton setUser={setUser} />
+      </div>
+      <h2>create new</h2>
+      <div>
+        <NewBlogForm 
+          title={title}
+          setTitle={setTitle}
+          author={author}
+          setAuthor={setAuthor}
+          url={url}
+          setUrl={setUrl}
+          user={user}
+          setBlogs={setBlogs}
+        />
       </div>
       <div>
         <ListedBlogs blogs={blogs} />

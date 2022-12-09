@@ -9,6 +9,10 @@ const App = () => {
   const [passwordFieldText, setPasswordFieldText] = useState('password')
   const [user, setUser] = useState(null)
 
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setUrl] = useState('')
+
   useEffect(() => { // run once on page load
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
@@ -26,6 +30,13 @@ const App = () => {
               blogs={blogs}
               user={user}
               setUser={setUser}
+              title={title}
+              setTitle={setTitle}
+              author={author}
+              setAuthor={setAuthor}
+              url={url}
+              setUrl={setUrl}
+              setBlogs={setBlogs}
             />
           : <LoggedOutPage
               usernameFieldText={usernameFieldText}

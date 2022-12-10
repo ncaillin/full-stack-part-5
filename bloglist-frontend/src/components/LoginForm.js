@@ -6,11 +6,12 @@ const LoginForm = (
     setUsernameFieldText,
     passwordFieldText,
     setPasswordFieldText,
-    setUser
+    setUser,
+    setNotification
   }
 ) => {
   return (
-    <form onSubmit={event => handleSubmit(event, setUser)}>
+    <form onSubmit={event => handleSubmit(event, setUser, setNotification)}>
       <div>
         username
         <input 
@@ -30,7 +31,7 @@ const LoginForm = (
   )
 }
 
-const handleSubmit = async (event, setUser) => {
+const handleSubmit = async (event, setUser, setNotification) => {
   event.preventDefault()
   
   const username = event.target[0].value
@@ -39,6 +40,11 @@ const handleSubmit = async (event, setUser) => {
   if (user) {
     setUser(user.data)
     localStorage.setItem('user', JSON.stringify(user.data))
+  } else {
+    setNotification({type: 'error', message: 'invalid username or password'})
+    setTimeout(() => {
+      setNotification({type: 'info', message: null})
+    }, 3000)
   }
 }
 

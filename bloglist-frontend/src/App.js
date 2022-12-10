@@ -13,6 +13,8 @@ const App = () => {
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
 
+  const [notification, setNotification] = useState({type: 'info', message: null})
+
   useEffect(() => { // run once on page load
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
@@ -37,6 +39,8 @@ const App = () => {
               url={url}
               setUrl={setUrl}
               setBlogs={setBlogs}
+              notification={notification}
+              setNotification={setNotification}
             />
           : <LoggedOutPage
               usernameFieldText={usernameFieldText}
@@ -44,6 +48,8 @@ const App = () => {
               passwordFieldText={passwordFieldText}
               setPasswordFieldText={setPasswordFieldText}
               setUser={setUser}
+              notification={notification}
+              setNotification={setNotification}
             />
       }
     </div>

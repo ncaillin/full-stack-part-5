@@ -1,6 +1,7 @@
 import Blog from '../components/Blog'
 import LogoutButton from '../components/LogoutButton'
 import NewBlogForm from '../components/NewBlogForm'
+import Notification from '../components/Notification'
 
 const LoggedInPage = ({
   blogs, 
@@ -12,11 +13,14 @@ const LoggedInPage = ({
   setAuthor,
   url,
   setUrl,
-  setBlogs
+  setBlogs,
+  notification,
+  setNotification
 }) => {
   return (
     <div>
       <h2>blogs</h2>
+      <Notification notification={notification} />
       <div>
         <DisplayUser user={user} />
         <LogoutButton setUser={setUser} />
@@ -32,6 +36,7 @@ const LoggedInPage = ({
           setUrl={setUrl}
           user={user}
           setBlogs={setBlogs}
+          setNotification={setNotification}
         />
       </div>
       <div>

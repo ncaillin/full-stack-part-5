@@ -1,4 +1,5 @@
 import LoginForm from "../components/LoginForm"
+import Notification from "../components/Notification"
 
 const LoggedOutPage = (
   {
@@ -6,18 +7,22 @@ const LoggedOutPage = (
     setUsernameFieldText,
     passwordFieldText,
     setPasswordFieldText,
-    setUser
+    setUser,
+    notification,
+    setNotification
   }
 ) => {
   return (
     <div>
       <h2>log in</h2>
+      <Notification notification={notification} />
       <LoginForm 
         usernameFieldText={usernameFieldText}
         setUsernameFieldText={setUsernameFieldText}
         passwordFieldText={passwordFieldText}
         setPasswordFieldText={setPasswordFieldText}
         setUser={setUser}
+        setNotification={setNotification}
       />
     </div>
   )

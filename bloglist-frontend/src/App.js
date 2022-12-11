@@ -24,34 +24,58 @@ const App = () => {
     }
   }, [])
 
+  const leftStyle = {
+    backgroundImage: 'linear-gradient(to right, black , white)',
+    width: '25%',
+    display:'inline-block',
+    position: 'absolute',
+    top:'0px',
+    bottom:'0px',
+    left: '0px'
+  }
+  const rightStyle = {
+    backgroundImage: 'linear-gradient(to left, black , white)',
+    width: '25%',
+    display:'inline-block',
+    position: 'absolute',
+    top:'0px',
+    bottom:'0px',
+    right: '0px'
+  }
+
   return (
-    <div>
-      {
-        user !== null
-          ? <LoggedInPage
-              blogs={blogs}
-              user={user}
-              setUser={setUser}
-              title={title}
-              setTitle={setTitle}
-              author={author}
-              setAuthor={setAuthor}
-              url={url}
-              setUrl={setUrl}
-              setBlogs={setBlogs}
-              notification={notification}
-              setNotification={setNotification}
-            />
-          : <LoggedOutPage
-              usernameFieldText={usernameFieldText}
-              setUsernameFieldText={setUsernameFieldTest}
-              passwordFieldText={passwordFieldText}
-              setPasswordFieldText={setPasswordFieldText}
-              setUser={setUser}
-              notification={notification}
-              setNotification={setNotification}
-            />
-      }
+    <div style={{textAlign: 'center'}}>
+      <div style={leftStyle}>
+      </div>
+      <div style={{width:'45%', textAlign:'center', margin:'center', display:'inline-block'}}>
+        {
+          user !== null
+            ? <LoggedInPage
+                blogs={blogs}
+                user={user}
+                setUser={setUser}
+                title={title}
+                setTitle={setTitle}
+                author={author}
+                setAuthor={setAuthor}
+                url={url}
+                setUrl={setUrl}
+                setBlogs={setBlogs}
+                notification={notification}
+                setNotification={setNotification}
+              />
+            : <LoggedOutPage
+                usernameFieldText={usernameFieldText}
+                setUsernameFieldText={setUsernameFieldTest}
+                passwordFieldText={passwordFieldText}
+                setPasswordFieldText={setPasswordFieldText}
+                setUser={setUser}
+                notification={notification}
+                setNotification={setNotification}
+              />
+        }
+      </div>
+      <div style={rightStyle}></div>
     </div>
   )
 }

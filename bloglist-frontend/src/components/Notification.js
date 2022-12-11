@@ -27,7 +27,7 @@ const InfoNotification = ({message}) => {
     paddingTop: '10px',
     paddingBottom: '10px',
     textAlign: 'center',
-    width: '50%',
+    width: '100%',
     marginBottom: '10px',
     marginLeft: '10px',
     borderRadius: '20px'
@@ -50,7 +50,7 @@ const ErrorNotification = ({message}) => {
     paddingTop: '10px',
     paddingBottom: '10px',
     textAlign: 'center',
-    width: '50%',
+    width: '100%',
     marginBottom: '10px',
     marginLeft: '10px',
     borderRadius: '20px'

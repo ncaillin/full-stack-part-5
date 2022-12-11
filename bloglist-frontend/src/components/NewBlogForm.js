@@ -12,13 +12,31 @@ const NewBlogForm = ({
   setBlogs,
   setNotification
 }) => {
+  const buttonStyle = {
+    width:'20%',
+  }
+  const formStyle = {
+    textAlign: 'center',
+    borderStyle: 'dashed',
+    marginLeft: '2%',
+    marginRight: '2%',
+    borderColor: 'lightgrey',
+    borderRadius: '30px',
+    borderWidth: '2px',
+    marginTop: '5px',
+    marginBottom: '10px',
+    paddingBottom: '10px'
+  }
   return (
-    <form onSubmit={event => handleSubmit(event, user, setBlogs, setNotification)}>
-      <TextField text={"title: "} val={title} setVal={setTitle} />
-      <TextField text={"author: "} val={author} setVal={setAuthor} />
-      <TextField text={"url: "} val={url} setVal={setUrl} />
-      <button type="submit">post</button>
-    </form>
+    <div style={formStyle}>
+      <h2>create new</h2>
+      <form onSubmit={event => handleSubmit(event, user, setBlogs, setNotification)}>
+        <TextField text={"title: "} val={title} setVal={setTitle} />
+        <TextField text={"author: "} val={author} setVal={setAuthor} />
+        <TextField text={"url: "} val={url} setVal={setUrl} />
+        <button style={buttonStyle} type="submit">post</button>
+      </form>
+    </div>
   )
 }
 const handleSubmit = async (event, user, setBlogs, setNotification) => {

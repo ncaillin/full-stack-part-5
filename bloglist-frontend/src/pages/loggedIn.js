@@ -17,15 +17,20 @@ const LoggedInPage = ({
   notification,
   setNotification
 }) => {
+  const outerLoginStyle = {
+    width: '95%',
+    textAlign: 'center',
+    margin: 'auto',
+    lineHeight: '200%'
+  }
   return (
     <div>
       <h2>blogs</h2>
       <Notification notification={notification} />
-      <div>
+      <div style={outerLoginStyle}>
         <DisplayUser user={user} />
         <LogoutButton setUser={setUser} />
       </div>
-      <h2>create new</h2>
       <div>
         <NewBlogForm 
           title={title}
@@ -56,8 +61,16 @@ const ListedBlogs = ({blogs}) => {
   )
 }
 const DisplayUser = ({user}) => {
+  const style = {
+    width: '69.6%',
+    backgroundColor: 'lightgrey',
+    display: 'inline-block',
+    borderRadius: '10px 0px 0px 10px',
+    borderStyle: 'solid',
+    borderWidth: '1px'
+  }
   return (
-    <div style={{display: 'inline-block'}}>
+    <div style={style}>
       {user.name} logged in
     </div>
   )

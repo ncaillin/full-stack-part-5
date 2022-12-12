@@ -2,6 +2,9 @@ import Blog from '../components/Blog'
 import LogoutButton from '../components/LogoutButton'
 import NewBlogForm from '../components/NewBlogForm'
 import Notification from '../components/Notification'
+import Togglable from '../components/Togglable'
+import { useRef, useEffect } from 'react'
+import blogService from '../services/blogs'
 
 const LoggedInPage = ({
   blogs, 
@@ -17,12 +20,17 @@ const LoggedInPage = ({
   notification,
   setNotification
 }) => {
+  
+  const blogFormRef = useRef()
+
   const outerLoginStyle = {
     width: '95%',
     textAlign: 'center',
     margin: 'auto',
     lineHeight: '200%'
   }
+
+
   return (
     <div>
       <h2>blogs</h2>
@@ -32,17 +40,20 @@ const LoggedInPage = ({
         <LogoutButton setUser={setUser} />
       </div>
       <div>
-        <NewBlogForm 
-          title={title}
-          setTitle={setTitle}
-          author={author}
-          setAuthor={setAuthor}
-          url={url}
-          setUrl={setUrl}
-          user={user}
-          setBlogs={setBlogs}
-          setNotification={setNotification}
-        />
+        <Togglable buttonText={'new blog'} ref={blogFormRef}>
+          <NewBlogForm 
+            blogRef={blogFormRef}
+            title={title}
+            setTitle={setTitle}
+            author={author}
+            setAuthor={setAuthor}
+            url={url}
+            setUrl={setUrl}
+            user={user}
+            setBlogs={setBlogs}
+            setNotification={setNotification}
+          />
+        </Togglable>
       </div>
       <div>
         <ListedBlogs blogs={blogs} />

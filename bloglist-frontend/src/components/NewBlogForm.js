@@ -10,7 +10,8 @@ const NewBlogForm = ({
   setUrl,
   user,
   setBlogs,
-  setNotification
+  setNotification,
+  blogRef
 }) => {
   const buttonStyle = {
     width:'20%',
@@ -30,7 +31,7 @@ const NewBlogForm = ({
   return (
     <div style={formStyle}>
       <h2>create new</h2>
-      <form onSubmit={event => handleSubmit(event, user, setBlogs, setNotification)}>
+      <form onSubmit={event => handleSubmit(event, user, setBlogs, setNotification, blogRef)}>
         <TextField text={"title: "} val={title} setVal={setTitle} />
         <TextField text={"author: "} val={author} setVal={setAuthor} />
         <TextField text={"url: "} val={url} setVal={setUrl} />
@@ -39,8 +40,9 @@ const NewBlogForm = ({
     </div>
   )
 }
-const handleSubmit = async (event, user, setBlogs, setNotification) => {
+const handleSubmit = async (event, user, setBlogs, setNotification, blogRef) => {
   event.preventDefault()
+  blogRef.current.toggleVisible()
   const title = event.target[0].value
   const author = event.target[1].value
   const url = event.target[2].value

@@ -51,9 +51,19 @@ const LoggedInPage = ({
 }
 
 const ListedBlogs = ({blogs, user, setBlogs}) => {
+  console.log('sorting blogs')
+  const sortedBlogs = blogs.sort((a,b) => {
+    if (a.likes > b.likes) {
+      return -1
+    }
+    if (a.likes < b.likes) {
+      return 1
+    }
+    return 0
+  })
   return (
     <div>
-      {blogs.map(blog => {
+      {sortedBlogs.map(blog => {
         return <Blog key={blog.id} blog={blog} user={user} setBlogs={setBlogs} blogs={blogs} />
       })}
     </div>

@@ -1,3 +1,6 @@
+
+import Toggleable from '../components/Togglable'
+
 const Blog = ({blog}) => {
   const outerStyle = {
     width: '95%',
@@ -8,7 +11,7 @@ const Blog = ({blog}) => {
     borderStyle: 'solid',
     borderWidth: '1px',
     borderRadius: '7px',
-    backgroundColor: 'black'
+    backgroundColor: 'lightgrey'
   }
   const blogTitleStyle = {
     width: '69.75%',
@@ -33,6 +36,13 @@ const Blog = ({blog}) => {
       <div style={blogAuthorStyle}>
         {blog.author}
       </div>
+      <Toggleable buttonText={'view'} hideText={'hide'} >
+        <p>url: {blog.url}</p>
+        <p>likes: {blog.likes}
+          <button>like</button>
+        </p>
+        <p>poster: {blog.user.name}</p>
+      </Toggleable>
     </div> 
   ) 
 }

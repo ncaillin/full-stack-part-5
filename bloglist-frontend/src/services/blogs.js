@@ -18,13 +18,31 @@ const postBlog = async (
     url
   }
   const config = {
-     headers: {
-    'Authorization': `Bearer ${token}`
+    headers: {
+      'Authorization': `Bearer ${token}`
     }
   }
   await axios.post(baseUrl, blogObject, config)
 }
 
+const putBlog = async ({
+  blogID,
+  token,
+  likes
+}) => {
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
+
+  const blogObject = {
+    likes
+  }
+  console.log(`${baseUrl}/${blogID}`)
+  await axios.put(`${baseUrl}/${blogID}`,blogObject, config)
+  console.log('put done')
+}
 
 
-export default { getAll, postBlog }
+export default { getAll, postBlog, putBlog }

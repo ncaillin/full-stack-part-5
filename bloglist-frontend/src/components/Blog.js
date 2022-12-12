@@ -1,7 +1,8 @@
 
 import Toggleable from '../components/Togglable'
+import LikeButton from './LikeButton'
 
-const Blog = ({blog}) => {
+const Blog = ({blog, user, setBlogs, blogs}) => {
   const outerStyle = {
     width: '95%',
     textAlign: 'center',
@@ -38,9 +39,8 @@ const Blog = ({blog}) => {
       </div>
       <Toggleable buttonText={'view'} hideText={'hide'} >
         <p>url: {blog.url}</p>
-        <p>likes: {blog.likes}
-          <button>like</button>
-        </p>
+        <p style={{display:'inline-block'}}>likes: {blog.likes}</p>
+        <LikeButton blog={blog} user={user} setBlogs={setBlogs} blogs={blogs} />
         <p>poster: {blog.user.name}</p>
       </Toggleable>
     </div> 

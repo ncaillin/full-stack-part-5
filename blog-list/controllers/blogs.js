@@ -5,6 +5,7 @@ const blogRouter = express.Router()
 
 blogRouter.use(express.json())
 
+
 blogRouter.get(
   '/', async (request, response, next) => {
     try {

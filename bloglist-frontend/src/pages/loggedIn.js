@@ -10,12 +10,6 @@ const LoggedInPage = ({
   blogs, 
   user, 
   setUser,
-  title,
-  setTitle,
-  author,
-  setAuthor,
-  url,
-  setUrl,
   setBlogs,
   notification,
   setNotification
@@ -50,17 +44,17 @@ const LoggedInPage = ({
         </Togglable>
       </div>
       <div>
-        <ListedBlogs blogs={blogs} />
+        <ListedBlogs blogs={blogs} user={user} setBlogs={setBlogs} />
       </div>
     </div>
   )
 }
 
-const ListedBlogs = ({blogs}) => {
+const ListedBlogs = ({blogs, user, setBlogs}) => {
   return (
     <div>
       {blogs.map(blog => {
-        return <Blog key={blog.id} blog={blog} />
+        return <Blog key={blog.id} blog={blog} user={user} setBlogs={setBlogs} blogs={blogs} />
       })}
     </div>
   )

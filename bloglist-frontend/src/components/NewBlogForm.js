@@ -1,18 +1,16 @@
 import TextField from './TextField'
 import blogService from '../services/blogs'
+import { useState } from 'react'
 
 const NewBlogForm = ({
-  title,
-  setTitle,
-  author,
-  setAuthor,
-  url,
-  setUrl,
   user,
   setBlogs,
   setNotification,
   blogRef
 }) => {
+  const [title, setTitle] = useState('title')
+  const [author, setAuthor] = useState('author')
+  const [url, setUrl] = useState('url')
   const buttonStyle = {
     width:'20%',
   }

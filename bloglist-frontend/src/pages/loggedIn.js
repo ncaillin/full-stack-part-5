@@ -43,12 +43,6 @@ const LoggedInPage = ({
         <Togglable buttonText={'new blog'} ref={blogFormRef}>
           <NewBlogForm 
             blogRef={blogFormRef}
-            title={title}
-            setTitle={setTitle}
-            author={author}
-            setAuthor={setAuthor}
-            url={url}
-            setUrl={setUrl}
             user={user}
             setBlogs={setBlogs}
             setNotification={setNotification}

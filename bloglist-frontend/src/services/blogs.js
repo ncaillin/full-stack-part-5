@@ -44,5 +44,13 @@ const putBlog = async ({
   console.log('put done')
 }
 
+const deleteBlog = async (token, blogID) => {
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
+  await axios.delete(`${baseUrl}/${blogID}`, config)
+}
 
-export default { getAll, postBlog, putBlog }
+export default { getAll, postBlog, putBlog, deleteBlog }

@@ -1,6 +1,7 @@
 
 import Toggleable from '../components/Togglable'
 import LikeButton from './LikeButton'
+import DeleteButton from './DeleteButton'
 
 const Blog = ({blog, user, setBlogs, blogs}) => {
   const outerStyle = {
@@ -42,6 +43,10 @@ const Blog = ({blog, user, setBlogs, blogs}) => {
         <p style={{display:'inline-block'}}>likes: {blog.likes}</p>
         <LikeButton blog={blog} user={user} setBlogs={setBlogs} blogs={blogs} />
         <p>poster: {blog.user.name}</p>
+        {blog.user.username === user.username
+          ? <DeleteButton blog={blog} user={user} blogs={blogs} setBlogs={setBlogs} />
+          : null
+        }
       </Toggleable>
     </div> 
   ) 

@@ -3,8 +3,7 @@ import LogoutButton from '../components/LogoutButton'
 import NewBlogForm from '../components/NewBlogForm'
 import Notification from '../components/Notification'
 import Togglable from '../components/Togglable'
-import { useRef, useEffect } from 'react'
-import blogService from '../services/blogs'
+import { useRef } from 'react'
 
 const LoggedInPage = ({
   blogs, 

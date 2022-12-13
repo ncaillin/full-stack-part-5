@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 const Notification = ({notification}) => {
   if (notification.message === null) {
     return <div style={{
@@ -14,6 +15,9 @@ const Notification = ({notification}) => {
       <ErrorNotification message={notification.message} />
     )
   }
+}
+Notification.propTypes = {
+  notification: PropTypes.object
 }
 
 const InfoNotification = ({message}) => {
@@ -38,6 +42,9 @@ const InfoNotification = ({message}) => {
     </div>
   )
 }
+InfoNotification.propTypes = {
+  message: PropTypes.string
+}
 
 const ErrorNotification = ({message}) => {
   const style = {
@@ -60,6 +67,9 @@ const ErrorNotification = ({message}) => {
       {message}
     </div>
   )
+}
+ErrorNotification.propTypes = {
+  message: PropTypes.string
 }
 
 

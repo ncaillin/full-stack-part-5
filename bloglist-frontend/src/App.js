@@ -51,28 +51,28 @@ const App = () => {
         {
           user !== null
             ? <LoggedInPage
-                blogs={blogs}
-                user={user}
-                setUser={setUser}
-                title={title}
-                setTitle={setTitle}
-                author={author}
-                setAuthor={setAuthor}
-                url={url}
-                setUrl={setUrl}
-                setBlogs={setBlogs}
-                notification={notification}
-                setNotification={setNotification}
-              />
+              blogs={blogs}
+              user={user}
+              setUser={setUser}
+              title={title}
+              setTitle={setTitle}
+              author={author}
+              setAuthor={setAuthor}
+              url={url}
+              setUrl={setUrl}
+              setBlogs={setBlogs}
+              notification={notification}
+              setNotification={setNotification}
+            />
             : <LoggedOutPage
-                usernameFieldText={usernameFieldText}
-                setUsernameFieldText={setUsernameFieldTest}
-                passwordFieldText={passwordFieldText}
-                setPasswordFieldText={setPasswordFieldText}
-                setUser={setUser}
-                notification={notification}
-                setNotification={setNotification}
-              />
+              usernameFieldText={usernameFieldText}
+              setUsernameFieldText={setUsernameFieldTest}
+              passwordFieldText={passwordFieldText}
+              setPasswordFieldText={setPasswordFieldText}
+              setUser={setUser}
+              notification={notification}
+              setNotification={setNotification}
+            />
         }
       </div>
       <div style={rightStyle}></div>

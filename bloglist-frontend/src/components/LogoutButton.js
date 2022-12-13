@@ -1,4 +1,4 @@
-
+import PropTypes from  'prop-types'
 const LogoutButton = ({setUser}) => {
   const style = {
     width: '30%',
@@ -10,8 +10,11 @@ const LogoutButton = ({setUser}) => {
 
   }
   return (
-      <button style={style} onClick={() => handleClick(setUser)}>logout</button>
+    <button style={style} onClick={() => handleClick(setUser)}>logout</button>
   )
+}
+LogoutButton.propTypes = {
+  setUser: PropTypes.func
 }
 
 const handleClick = (setUser) => {

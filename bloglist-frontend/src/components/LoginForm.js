@@ -1,4 +1,5 @@
 import loginService from '../services/login'
+import PropTypes from 'prop-types'
 
 const LoginForm = (
   {
@@ -29,6 +30,14 @@ const LoginForm = (
       <button type="submit">log in</button>
     </form>
   )
+}
+LoginForm.propTypes = {
+  usernameFieldText: PropTypes.string,
+  setUsernameFieldText: PropTypes.func,
+  passwordFieldText: PropTypes.string,
+  setPasswordFieldText: PropTypes.func,
+  setUser: PropTypes.func,
+  setNotification: PropTypes.func
 }
 
 const handleSubmit = async (event, setUser, setNotification) => {

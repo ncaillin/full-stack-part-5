@@ -1,5 +1,6 @@
-import LoginForm from "../components/LoginForm"
-import Notification from "../components/Notification"
+import LoginForm from '../components/LoginForm'
+import Notification from '../components/Notification'
+import PropTypes from 'prop-types'
 
 const LoggedOutPage = (
   {
@@ -26,6 +27,15 @@ const LoggedOutPage = (
       />
     </div>
   )
+}
+LoggedOutPage.propTypes = {
+  usernameFieldText: PropTypes.string,
+  setUsernameFieldText: PropTypes.func,
+  passwordFieldText: PropTypes.string,
+  setPasswordFieldText: PropTypes.func,
+  setUser: PropTypes.func,
+  notification: PropTypes.object,
+  setNotification: PropTypes.func
 }
 
 export default LoggedOutPage

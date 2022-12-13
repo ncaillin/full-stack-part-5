@@ -13,10 +13,10 @@ const submitLogin = async (username, password) => {
     .catch(error => {
       console.log(error)
     })
-    const returnVal = user === undefined
-      ? null
-      : user
-    return returnVal
+  const returnVal = user === undefined
+    ? null
+    : user
+  return returnVal
 }
 
 

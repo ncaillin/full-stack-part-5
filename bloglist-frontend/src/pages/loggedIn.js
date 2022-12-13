@@ -4,6 +4,7 @@ import NewBlogForm from '../components/NewBlogForm'
 import Notification from '../components/Notification'
 import Togglable from '../components/Togglable'
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 
 const LoggedInPage = ({
   blogs, 
@@ -19,7 +20,7 @@ const LoggedInPage = ({
   const outerLoginStyle = {
     width: '95%',
     textAlign: 'center',
-    margin: 'auto',
+    margin: 'auto', 
     lineHeight: '200%'
   }
 
@@ -48,6 +49,14 @@ const LoggedInPage = ({
     </div>
   )
 }
+LoggedInPage.propTypes = {
+  blogs: PropTypes.array, 
+  user: PropTypes.object, 
+  setUser: PropTypes.func,
+  setBlogs: PropTypes.func,
+  notification: PropTypes.object,
+  setNotification: PropTypes.func
+}
 
 const ListedBlogs = ({blogs, user, setBlogs}) => {
   console.log('sorting blogs')
@@ -68,6 +77,11 @@ const ListedBlogs = ({blogs, user, setBlogs}) => {
     </div>
   )
 }
+ListedBlogs.propTypes = {
+  blogs: PropTypes.array,
+  user: PropTypes.object,
+  setBlogs: PropTypes.func
+}
 const DisplayUser = ({user}) => {
   const style = {
     width: '69.6%',
@@ -82,6 +96,9 @@ const DisplayUser = ({user}) => {
       {user.name} logged in
     </div>
   )
+}
+DisplayUser.propTypes = {
+  user: PropTypes.object
 }
 
 

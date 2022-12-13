@@ -1,7 +1,14 @@
 import blogService from '../services/blogs'
+import PropTypes from 'prop-types'
 
 const DeleteButton = ({blog, user, blogs, setBlogs}) => {
   return <button onClick={() => handleCLick (blog, user, blogs, setBlogs)} >delete</button>
+}
+DeleteButton.propTypes = {
+  blog: PropTypes.object,
+  user: PropTypes.object,
+  blogs: PropTypes.array,
+  setBlogs: PropTypes.func
 }
 
 const handleCLick = async (blog, user, blogs, setBlogs) => {

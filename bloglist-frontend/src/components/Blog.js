@@ -2,6 +2,7 @@
 import Toggleable from '../components/Togglable'
 import LikeButton from './LikeButton'
 import DeleteButton from './DeleteButton'
+import PropTypes from 'prop-types'
 
 const Blog = ({blog, user, setBlogs, blogs}) => {
   const outerStyle = {
@@ -50,6 +51,12 @@ const Blog = ({blog, user, setBlogs, blogs}) => {
       </Toggleable>
     </div> 
   ) 
+}
+Blog.propTypes = {
+  blog: PropTypes.object,
+  user: PropTypes.object,
+  setBlogs: PropTypes.func,
+  blogs: PropTypes.array
 }
 
 export default Blog

@@ -1,11 +1,18 @@
 import blogService from '../services/blogs'
+import PropTypes from 'prop-types'
 
 const LikeButton = ({blog, user, blogs, setBlogs}) => {
   return (
     <div style={{display: 'inline-block'}}>
-      <button onClick={event => handleClick(blog, user, blogs, setBlogs)}>like</button>
+      <button onClick={() => handleClick(blog, user, blogs, setBlogs)}>like</button>
     </div>
   )
+}
+LikeButton.propTypes = {
+  blog: PropTypes.object,
+  user: PropTypes.object,
+  blogs: PropTypes.array,
+  setBlogs: PropTypes.func
 }
 
 const handleClick = (blog, user, blogs, setBlogs) => {

@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event'
 import Blog from './Blog'
 describe('testing blog page', () => {
   let container
+  let setBlogs = jest.fn()
   beforeEach(() => {
     const user = {
       username: 'testUser',
@@ -17,7 +18,6 @@ describe('testing blog page', () => {
       likes: 12,
       user
     }
-    const setBlogs = jest.fn()
     const blogs = []
 
     container = render(

@@ -3,6 +3,7 @@ import Toggleable from '../components/Togglable'
 import LikeButton from './LikeButton'
 import DeleteButton from './DeleteButton'
 import PropTypes from 'prop-types'
+import blogService from '../services/blogs'
 
 const Blog = ({blog, user, setBlogs, blogs}) => {
   const outerStyle = {
@@ -42,7 +43,7 @@ const Blog = ({blog, user, setBlogs, blogs}) => {
       <Toggleable buttonText={'view'} hideText={'hide'} >
         <p>url: {blog.url}</p>
         <p style={{display:'inline-block'}}>likes: {blog.likes}</p>
-        <LikeButton blog={blog} user={user} setBlogs={setBlogs} blogs={blogs} />
+        <LikeButton handleClick={() => handleClick(blog, user, blogs, setBlogs)} />
         <p>poster: {blog.user.name}</p>
         {blog.user.username === user.username
           ? <DeleteButton blog={blog} user={user} blogs={blogs} setBlogs={setBlogs} />
@@ -57,6 +58,24 @@ Blog.propTypes = {
   user: PropTypes.object,
   setBlogs: PropTypes.func,
   blogs: PropTypes.array
+}
+
+const handleClick = (blog, user, blogs, setBlogs) => {
+  blogService.putBlog(
+    {
+      blogID: blog.id,
+      token: user.token,
+      likes: blog.likes + 1
+    }
+  )
+  const updatedBlogs = blogs.map(b => {
+    if (b.id === blog.id) {
+      return {...b, likes: b.likes + 1}
+    } else {
+      return b
+    }
+  })
+  setBlogs(updatedBlogs)
 }
 
 export default Blog

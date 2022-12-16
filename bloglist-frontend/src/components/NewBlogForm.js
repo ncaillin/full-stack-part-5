@@ -1,17 +1,15 @@
 import TextField from './TextField'
-import blogService from '../services/blogs'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const NewBlogForm = ({
   user,
-  setBlogs,
-  setNotification,
-  blogRef
+  newBlog,
+  blogFormRef
 }) => {
-  const [title, setTitle] = useState('title')
-  const [author, setAuthor] = useState('author')
-  const [url, setUrl] = useState('url')
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setUrl] = useState('')
   const buttonStyle = {
     width:'20%',
   }
@@ -30,34 +28,26 @@ const NewBlogForm = ({
   return (
     <div style={formStyle}>
       <h2>create new</h2>
-      <form onSubmit={event => handleSubmit(event, user, setBlogs, setNotification, blogRef)}>
-        <TextField text={'title: '} val={title} setVal={setTitle} />
-        <TextField text={'author: '} val={author} setVal={setAuthor} />
-        <TextField text={'url: '} val={url} setVal={setUrl} />
+      <form onSubmit={event => handleSubmit(event, title, author, url, user, newBlog, blogFormRef)}>
+        <TextField text={'title: '} val={title} setVal={setTitle} placeholder={'title'} />
+        <TextField text={'author: '} val={author} setVal={setAuthor} placeholder={'author'} />
+        <TextField text={'url: '} val={url} setVal={setUrl} placeholder={'url'}/>
         <button style={buttonStyle} type="submit">post</button>
       </form>
     </div>
   )
 }
 NewBlogForm.propTypes = {
-  user: PropTypes.object.isRequired,
-  setBlogs: PropTypes.func.isRequired,
-  setNotification: PropTypes.func.isRequired,
-  blogRef: PropTypes.any.isRequired
+  user: PropTypes.object,
+  blogFormRef: PropTypes.any,
+  handleSubmitTest: PropTypes.func,
+  newBlog: PropTypes.func,
 }
-const handleSubmit = async (event, user, setBlogs, setNotification, blogRef) => {
+const handleSubmit = async (event, title, author, url, user, newBlog, blogFormRef) => {
+  blogFormRef.current.toggleVisible()
   event.preventDefault()
-  blogRef.current.toggleVisible()
-  const title = event.target[0].value
-  const author = event.target[1].value
-  const url = event.target[2].value
-  await blogService.postBlog(title, author, url, user.token)
-  const blogs = await blogService.getAll()
-  setBlogs(blogs)
-  setNotification({type: 'info', message: `a new blog ${title} by ${author}`})
-  setTimeout(() => {
-    setNotification({type: 'info', message: null})
-  }, 3000)
+  const token = user.token
+  await newBlog(title, author, url, token)
 }
 
 export default NewBlogForm

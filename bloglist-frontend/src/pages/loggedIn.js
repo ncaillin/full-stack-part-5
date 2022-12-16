@@ -5,6 +5,7 @@ import Notification from '../components/Notification'
 import Togglable from '../components/Togglable'
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
+import blogService from '../services/blogs'
 
 const LoggedInPage = ({
   blogs, 
@@ -16,6 +17,16 @@ const LoggedInPage = ({
 }) => {
   
   const blogFormRef = useRef()
+
+  const newBlog = async (title, author, url, token) => {
+    await blogService.postBlog(title, author, url, token)
+    const blogs = await blogService.getAll()
+    setBlogs(blogs)
+    setNotification({type: 'info', message: `a new blog ${title} by ${author}`})
+    setTimeout(() => {
+      setNotification({type: 'info', message: null})
+    }, 3000)
+  }
 
   const outerLoginStyle = {
     width: '95%',
@@ -36,10 +47,9 @@ const LoggedInPage = ({
       <div>
         <Togglable buttonText={'new blog'} ref={blogFormRef}>
           <NewBlogForm 
-            blogRef={blogFormRef}
             user={user}
-            setBlogs={setBlogs}
-            setNotification={setNotification}
+            newBlog={newBlog}
+            blogFormRef={blogFormRef}
           />
         </Togglable>
       </div>

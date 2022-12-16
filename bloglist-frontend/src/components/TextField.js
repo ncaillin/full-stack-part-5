@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-const TextField = ({text, val, setVal}) => {
+const TextField = ({text, val, setVal, placeholder}) => {
   const outerForm={
     backgroundColor: 'lightblue',
     borderWidth: '2px',
@@ -29,6 +29,7 @@ const TextField = ({text, val, setVal}) => {
       </div>
       <input style={formInput}
         value={val}
+        placeholder={placeholder}
         onChange={(e) => setVal(e.target.value)}
       ></input>
     </div>
@@ -37,7 +38,8 @@ const TextField = ({text, val, setVal}) => {
 TextField.propTypes = {
   text: PropTypes.string,
   val: PropTypes.string,
-  setVal: PropTypes.func
+  setVal: PropTypes.func,
+  placeholder: PropTypes.string
 }
 
 export default TextField

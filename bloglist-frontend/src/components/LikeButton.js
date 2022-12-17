@@ -1,15 +1,16 @@
 
 import PropTypes from 'prop-types'
 
-const LikeButton = ({handleClick}) => {
+const LikeButton = ({handleClick, id}) => {
   return (
-    <div style={{display: 'inline-block'}}>
+    <div id={id} style={{display: 'inline-block'}}>
       <button onClick={handleClick}>like</button>
     </div>
   )
 }
 LikeButton.propTypes = {
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  id: PropTypes.string
 }
 
 export default LikeButton

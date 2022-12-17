@@ -43,7 +43,7 @@ const Blog = ({blog, user, setBlogs, blogs}) => {
       <Toggleable buttonText={'view'} hideText={'hide'} >
         <p>url: {blog.url}</p>
         <p style={{display:'inline-block'}}>likes: {blog.likes}</p>
-        <LikeButton handleClick={() => handleClick(blog, user, blogs, setBlogs)} />
+        <LikeButton id={`${blog.title} likes`.replace(/\s/g, '')} handleClick={() => handleClick(blog, user, blogs, setBlogs)} />
         <p>poster: {blog.user.name}</p>
         {blog.user.username === user.username
           ? <DeleteButton blog={blog} user={user} blogs={blogs} setBlogs={setBlogs} />

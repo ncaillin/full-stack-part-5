@@ -1,9 +1,11 @@
 import axios from 'axios'
 const baseUrl = '/api/blogs'
 
-const getAll = () => {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
+const getAll = async () => {
+  console.log('OK')
+  const request = await axios.get(baseUrl)
+  console.log(request)
+  return request.data
 }
 
 const postBlog = async (

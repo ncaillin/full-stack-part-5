@@ -5,8 +5,6 @@ import blogService from './services/blogs'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [usernameFieldText, setUsernameFieldTest] = useState('username')
-  const [passwordFieldText, setPasswordFieldText] = useState('password')
   const [user, setUser] = useState(null)
 
   const [title, setTitle] = useState('')
@@ -65,10 +63,6 @@ const App = () => {
               setNotification={setNotification}
             />
             : <LoggedOutPage
-              usernameFieldText={usernameFieldText}
-              setUsernameFieldText={setUsernameFieldTest}
-              passwordFieldText={passwordFieldText}
-              setPasswordFieldText={setPasswordFieldText}
               setUser={setUser}
               notification={notification}
               setNotification={setNotification}

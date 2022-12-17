@@ -52,7 +52,7 @@ const ErrorNotification = ({message}) => {
     fontSize: '20px',
     borderStyle: 'solid',
     borderWidth: '2px',
-    borderColor: 'black',
+    borderColor: 'red',
     backgroundColor: '#f1f2eb',
     paddingTop: '10px',
     paddingBottom: '10px',
@@ -63,7 +63,7 @@ const ErrorNotification = ({message}) => {
     borderRadius: '20px'
   }
   return (
-    <div style={style}>
+    <div style={style} id='error'>
       {message}
     </div>
   )

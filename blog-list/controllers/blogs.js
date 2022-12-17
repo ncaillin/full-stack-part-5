@@ -11,6 +11,7 @@ blogRouter.get(
     try {
       const blogs = await Blog.find({}).populate('user', ['username', 'name', 'id'])
       response.json(blogs)
+      response.status(200).end()
     } catch(error) {
       next(error)
     }
@@ -52,6 +53,7 @@ blogRouter.post(
       await User.findByIdAndUpdate(user._id, {blogs: blogs}, {new: true})
       response.json(blog)
     } catch(error) {
+      console.log(error)
       next(error)
     }
   }

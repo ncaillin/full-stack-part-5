@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 
 const LoggedOutPage = (
   {
-    usernameFieldText,
-    setUsernameFieldText,
-    passwordFieldText,
-    setPasswordFieldText,
     setUser,
     notification,
     setNotification
@@ -18,10 +14,6 @@ const LoggedOutPage = (
       <h2>log in</h2>
       <Notification notification={notification} />
       <LoginForm 
-        usernameFieldText={usernameFieldText}
-        setUsernameFieldText={setUsernameFieldText}
-        passwordFieldText={passwordFieldText}
-        setPasswordFieldText={setPasswordFieldText}
         setUser={setUser}
         setNotification={setNotification}
       />

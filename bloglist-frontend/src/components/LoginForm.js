@@ -1,22 +1,23 @@
 import loginService from '../services/login'
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 
 const LoginForm = (
   {
-    usernameFieldText,
-    setUsernameFieldText,
-    passwordFieldText,
-    setPasswordFieldText,
     setUser,
     setNotification
   }
 ) => {
+  const [usernameFieldText, setUsernameFieldText] = useState('')
+  const [passwordFieldText, setPasswordFieldText] = useState('')
   return (
     <form onSubmit={event => handleSubmit(event, setUser, setNotification)}>
       <div>
         username
         <input 
           value={usernameFieldText}
+          placeholder={'username'}
+          id='username'
           onChange={event => setUsernameFieldText(event.target.value)}
         ></input>
       </div>
@@ -24,6 +25,8 @@ const LoginForm = (
         password
         <input
           value={passwordFieldText}
+          placeholder={'password'}
+          id='password'
           onChange={event => setPasswordFieldText(event.target.value)}
         ></input>
       </div>

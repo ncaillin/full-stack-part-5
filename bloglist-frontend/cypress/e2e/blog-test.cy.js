@@ -97,5 +97,55 @@ describe('blog app', function() {
           cy.get(`#${deleteID}`).should('not.exist')
         })
     })
+
+    it('blogs are ordered according to likes', function () {
+      cy.get('#newblog-view').click()
+      cy.get('#title').type('1')
+      cy.get('#author').type('test author')
+      cy.get('#url').type('test url')
+      cy.contains('post').click()
+      cy.wait(100)
+
+      cy.get('#newblog-view').click()
+      cy.get('#title').type('4')
+      cy.get('#author').type('test author')
+      cy.get('#url').type('test url')
+      cy.contains('post').click()
+      cy.wait(100)
+
+      cy.get('#newblog-view').click()
+      cy.get('#title').type('3')
+      cy.get('#author').type('test author')
+      cy.get('#url').type('test url')
+      cy.contains('post').click()
+      cy.wait(100)
+
+      cy.get('#newblog-view').click()
+      cy.get('#title').type('2')
+      cy.get('#author').type('test author')
+      cy.get('#url').type('test url')
+      cy.contains('post').click()
+      cy.wait(500)
+
+      cy
+        .request('GET', 'http://localhost:8080/api/blogs')
+        .then(response => {
+          const array = response.body.map(blog => {
+            return {title: blog.title, id: blog.id}
+          })
+          array.forEach(blog => {
+            cy.get(`#${blog.id}-view`).click()
+            for (let i = 0; i < Number(blog.title); i++) {
+              cy.get(`#${blog.id}-likes`).click()
+            }
+          })
+          cy.get('.blog').eq(0).should('contain', '4')
+          cy.get('.blog').eq(1).should('contain', '3')
+          cy.get('.blog').eq(2).should('contain', '2')
+          cy.get('.blog').eq(3).should('contain', '1')
+        })
+      
+    })
+
   })
 })

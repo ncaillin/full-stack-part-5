@@ -5,6 +5,7 @@ const Togglable = forwardRef((props, refs) => {
   const children = props.children
   const buttonText = props.buttonText
   const hideText = props.hideText || 'cancel'
+  const id = props.id
   const [isVisible, setIsVisible] = useState(false)
 
   const toggleVisible = () => {
@@ -25,7 +26,7 @@ const Togglable = forwardRef((props, refs) => {
   return (
     <div>
       <div style={hideWhenVisible}>
-        <button onClick={toggleVisible}>{buttonText}</button>
+        <button id={`${id}-view`} onClick={toggleVisible}>{buttonText}</button>
       </div>
       <div style={showWhenVisible} className="TogglableContent">
         {children}
@@ -37,7 +38,8 @@ const Togglable = forwardRef((props, refs) => {
 Togglable.propTypes = {
   children: PropTypes.any,
   buttonText: PropTypes.string.isRequired,
-  hideText: PropTypes.string
+  hideText: PropTypes.string,
+  id: PropTypes.string
 }
 
 

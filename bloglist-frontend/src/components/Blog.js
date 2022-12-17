@@ -33,14 +33,14 @@ const Blog = ({blog, user, setBlogs, blogs}) => {
     borderRadius: '0px 5px 5px 0px'
   }
   return (
-    <div style={outerStyle}>
+    <div style={outerStyle} className='blog'>
       <div style={blogTitleStyle}>
         {blog.title}
       </div>
       <div style={blogAuthorStyle}>
         {blog.author}
       </div>
-      <Toggleable buttonText={'view'} hideText={'hide'} >
+      <Toggleable buttonText={'view'} hideText={'hide'} id={blog.id} >
         <p>url: {blog.url}</p>
         <p style={{display:'inline-block'}}>likes: {blog.likes}</p>
         <LikeButton id={`${blog.id}-likes`} handleClick={() => handleClick(blog, user, blogs, setBlogs)} />

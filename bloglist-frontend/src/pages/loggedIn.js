@@ -45,7 +45,7 @@ const LoggedInPage = ({
         <LogoutButton setUser={setUser} />
       </div>
       <div>
-        <Togglable buttonText={'new blog'} ref={blogFormRef}>
+        <Togglable buttonText={'new blog'} ref={blogFormRef} id={'newblog'}>
           <NewBlogForm 
             user={user}
             newBlog={newBlog}

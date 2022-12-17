@@ -28,7 +28,7 @@ const NewBlogForm = ({
   return (
     <div style={formStyle}>
       <h2>create new</h2>
-      <form onSubmit={event => handleSubmit(event, title, author, url, user, newBlog, blogFormRef)}>
+      <form onSubmit={event => handleSubmit(event, title, author, url, user, newBlog, blogFormRef, setTitle, setAuthor, setUrl)}>
         <TextField text={'title: '} val={title} setVal={setTitle} placeholder={'title'} id='title' />
         <TextField text={'author: '} val={author} setVal={setAuthor} placeholder={'author'} id='author' />
         <TextField text={'url: '} val={url} setVal={setUrl} placeholder={'url'} id='url'/>
@@ -43,11 +43,14 @@ NewBlogForm.propTypes = {
   handleSubmitTest: PropTypes.func,
   newBlog: PropTypes.func,
 }
-const handleSubmit = async (event, title, author, url, user, newBlog, blogFormRef) => {
+const handleSubmit = async (event, title, author, url, user, newBlog, blogFormRef, setTitle, setAuthor, setUrl) => {
   blogFormRef.current.toggleVisible()
   event.preventDefault()
   const token = user.token
   await newBlog(title, author, url, token)
+  setTitle('')
+  setAuthor('')
+  setUrl('')
 }
 
 export default NewBlogForm

@@ -29,9 +29,9 @@ const NewBlogForm = ({
     <div style={formStyle}>
       <h2>create new</h2>
       <form onSubmit={event => handleSubmit(event, title, author, url, user, newBlog, blogFormRef)}>
-        <TextField text={'title: '} val={title} setVal={setTitle} placeholder={'title'} />
-        <TextField text={'author: '} val={author} setVal={setAuthor} placeholder={'author'} />
-        <TextField text={'url: '} val={url} setVal={setUrl} placeholder={'url'}/>
+        <TextField text={'title: '} val={title} setVal={setTitle} placeholder={'title'} id='title' />
+        <TextField text={'author: '} val={author} setVal={setAuthor} placeholder={'author'} id='author' />
+        <TextField text={'url: '} val={url} setVal={setUrl} placeholder={'url'} id='url'/>
         <button style={buttonStyle} type="submit">post</button>
       </form>
     </div>
